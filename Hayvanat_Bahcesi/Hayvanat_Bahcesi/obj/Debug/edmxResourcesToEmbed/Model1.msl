@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HayvanatBahcesiModelStoreContainer" CdmEntityContainer="HayvanatBahcesiEntities">
+    <EntitySetMapping Name="Bilets">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Bilet">
+        <MappingFragment StoreEntitySet="Bilet">
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="Bucret" ColumnName="Bucret" />
+          <ScalarProperty Name="Btarih" ColumnName="Btarih" />
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calisans">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Calisan">
+        <MappingFragment StoreEntitySet="Calisan">
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="Cad" ColumnName="Cad" />
+          <ScalarProperty Name="Csoyad" ColumnName="Csoyad" />
+          <ScalarProperty Name="Cmaas" ColumnName="Cmaas" />
+          <ScalarProperty Name="Ckidem" ColumnName="Ckidem" />
+          <ScalarProperty Name="HBid" ColumnName="HBid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Hayvans">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Hayvan">
+        <MappingFragment StoreEntitySet="Hayvan">
+          <ScalarProperty Name="Hid" ColumnName="Hid" />
+          <ScalarProperty Name="Hcins" ColumnName="Hcins" />
+          <ScalarProperty Name="Hkafesno" ColumnName="Hkafesno" />
+          <ScalarProperty Name="HdogumT" ColumnName="HdogumT" />
+          <ScalarProperty Name="Hhabitat" ColumnName="Hhabitat" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+          <ScalarProperty Name="HBid" ColumnName="HBid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HayvanatBahcesis">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.HayvanatBahcesi">
+        <MappingFragment StoreEntitySet="HayvanatBahcesi">
+          <ScalarProperty Name="HBid" ColumnName="HBid" />
+          <ScalarProperty Name="HBad" ColumnName="HBad" />
+          <ScalarProperty Name="HBtelefon" ColumnName="HBtelefon" />
+          <ScalarProperty Name="HBadres" ColumnName="HBadres" />
+          <ScalarProperty Name="HBacilis" ColumnName="HBacilis" />
+          <ScalarProperty Name="HBkapanis" ColumnName="HBkapanis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HayvanDetays">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.HayvanDetay">
+        <MappingFragment StoreEntitySet="HayvanDetay">
+          <ScalarProperty Name="HDid" ColumnName="HDid" />
+          <ScalarProperty Name="Hid" ColumnName="Hid" />
+          <ScalarProperty Name="HDboy" ColumnName="HDboy" />
+          <ScalarProperty Name="HDgenislik" ColumnName="HDgenislik" />
+          <ScalarProperty Name="HDdiyet" ColumnName="HDdiyet" />
+          <ScalarProperty Name="HDcinsiyet" ColumnName="HDcinsiyet" />
+          <ScalarProperty Name="HDbeslenme" ColumnName="HDbeslenme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteris">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Musteri">
+        <MappingFragment StoreEntitySet="Musteri">
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+          <ScalarProperty Name="Mad" ColumnName="Mad" />
+          <ScalarProperty Name="Msoyad" ColumnName="Msoyad" />
+          <ScalarProperty Name="Madres" ColumnName="Madres" />
+          <ScalarProperty Name="HBid" ColumnName="HBid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ctelefons">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Ctelefon">
+        <MappingFragment StoreEntitySet="Ctelefon">
+          <ScalarProperty Name="Ctelefon1" ColumnName="Ctelefon" />
+          <ScalarProperty Name="Cid" ColumnName="Cid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mtelefons">
+      <EntityTypeMapping TypeName="HayvanatBahcesiModel.Mtelefon">
+        <MappingFragment StoreEntitySet="Mtelefon">
+          <ScalarProperty Name="Mtelefon1" ColumnName="Mtelefon" />
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Satar" TypeName="HayvanatBahcesiModel.Satar" StoreEntitySet="Satar">
+      <EndProperty Name="Bilet">
+        <ScalarProperty Name="Bid" ColumnName="Bid" />
+      </EndProperty>
+      <EndProperty Name="Calisan">
+        <ScalarProperty Name="Cid" ColumnName="Cid" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

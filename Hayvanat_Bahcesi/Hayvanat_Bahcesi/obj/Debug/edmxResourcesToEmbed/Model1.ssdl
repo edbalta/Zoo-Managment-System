@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HayvanatBahcesiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Bilet">
+    <Key>
+      <PropertyRef Name="Bid" />
+    </Key>
+    <Property Name="Bid" Type="int" Nullable="false" />
+    <Property Name="Bucret" Type="int" />
+    <Property Name="Btarih" Type="int" />
+    <Property Name="Mid" Type="int" />
+  </EntityType>
+  <EntityType Name="Calisan">
+    <Key>
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Cid" Type="int" Nullable="false" />
+    <Property Name="Cad" Type="nchar" MaxLength="10" />
+    <Property Name="Csoyad" Type="nchar" MaxLength="10" />
+    <Property Name="Cmaas" Type="int" />
+    <Property Name="Ckidem" Type="nchar" MaxLength="10" />
+    <Property Name="HBid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HayvanatBahcesi.dbo.Ctelefon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Ctelefon">
+    <Key>
+      <PropertyRef Name="Ctelefon" />
+      <PropertyRef Name="Cid" />
+    </Key>
+    <Property Name="Ctelefon" Type="int" Nullable="false" />
+    <Property Name="Cid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hayvan">
+    <Key>
+      <PropertyRef Name="Hid" />
+    </Key>
+    <Property Name="Hid" Type="int" Nullable="false" />
+    <Property Name="Hcins" Type="nchar" MaxLength="10" />
+    <Property Name="Hkafesno" Type="int" />
+    <Property Name="HdogumT" Type="int" />
+    <Property Name="Hhabitat" Type="nchar" MaxLength="10" />
+    <Property Name="Cid" Type="int" />
+    <Property Name="HBid" Type="int" />
+  </EntityType>
+  <EntityType Name="HayvanatBahcesi">
+    <Key>
+      <PropertyRef Name="HBid" />
+    </Key>
+    <Property Name="HBid" Type="int" Nullable="false" />
+    <Property Name="HBad" Type="nchar" MaxLength="20" />
+    <Property Name="HBtelefon" Type="int" />
+    <Property Name="HBadres" Type="nchar" MaxLength="50" />
+    <Property Name="HBacilis" Type="int" />
+    <Property Name="HBkapanis" Type="int" />
+  </EntityType>
+  <EntityType Name="HayvanDetay">
+    <Key>
+      <PropertyRef Name="HDid" />
+    </Key>
+    <Property Name="HDid" Type="int" Nullable="false" />
+    <Property Name="Hid" Type="int" Nullable="false" />
+    <Property Name="HDboy" Type="int" />
+    <Property Name="HDgenislik" Type="int" />
+    <Property Name="HDdiyet" Type="nchar" MaxLength="10" />
+    <Property Name="HDcinsiyet" Type="nchar" MaxLength="10" />
+    <Property Name="HDbeslenme" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HayvanatBahcesi.dbo.Mtelefon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Mtelefon">
+    <Key>
+      <PropertyRef Name="Mtelefon" />
+      <PropertyRef Name="Mid" />
+    </Key>
+    <Property Name="Mtelefon" Type="int" Nullable="false" />
+    <Property Name="Mid" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Musteri">
+    <Key>
+      <PropertyRef Name="Mid" />
+    </Key>
+    <Property Name="Mid" Type="int" Nullable="false" />
+    <Property Name="Mad" Type="nchar" MaxLength="20" />
+    <Property Name="Msoyad" Type="nchar" MaxLength="20" />
+    <Property Name="Madres" Type="nchar" MaxLength="50" />
+    <Property Name="HBid" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HayvanatBahcesi.dbo.Satar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Satar">
+    <Key>
+      <PropertyRef Name="Cid" />
+      <PropertyRef Name="Bid" />
+    </Key>
+    <Property Name="Cid" Type="int" Nullable="false" />
+    <Property Name="Bid" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Bilet_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="0..1" />
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="Mid" />
+      </Principal>
+      <Dependent Role="Bilet">
+        <PropertyRef Name="Mid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calisan_HayvanatBahcesi">
+    <End Role="HayvanatBahcesi" Type="Self.HayvanatBahcesi" Multiplicity="0..1" />
+    <End Role="Calisan" Type="Self.Calisan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HayvanatBahcesi">
+        <PropertyRef Name="HBid" />
+      </Principal>
+      <Dependent Role="Calisan">
+        <PropertyRef Name="HBid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ctelefon_Calisan">
+    <End Role="Calisan" Type="Self.Calisan" Multiplicity="1" />
+    <End Role="Ctelefon" Type="Self.Ctelefon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calisan">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Ctelefon">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hayvan_Calisan">
+    <End Role="Calisan" Type="Self.Calisan" Multiplicity="0..1" />
+    <End Role="Hayvan" Type="Self.Hayvan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calisan">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Hayvan">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hayvan_HayvanatBahcesi">
+    <End Role="HayvanatBahcesi" Type="Self.HayvanatBahcesi" Multiplicity="0..1" />
+    <End Role="Hayvan" Type="Self.Hayvan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HayvanatBahcesi">
+        <PropertyRef Name="HBid" />
+      </Principal>
+      <Dependent Role="Hayvan">
+        <PropertyRef Name="HBid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HayvanDetay_Hayvan">
+    <End Role="Hayvan" Type="Self.Hayvan" Multiplicity="1" />
+    <End Role="HayvanDetay" Type="Self.HayvanDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hayvan">
+        <PropertyRef Name="Hid" />
+      </Principal>
+      <Dependent Role="HayvanDetay">
+        <PropertyRef Name="Hid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Mtelefon_Musteri">
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="1" />
+    <End Role="Mtelefon" Type="Self.Mtelefon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteri">
+        <PropertyRef Name="Mid" />
+      </Principal>
+      <Dependent Role="Mtelefon">
+        <PropertyRef Name="Mid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Musteri_HayvanatBahcesi">
+    <End Role="HayvanatBahcesi" Type="Self.HayvanatBahcesi" Multiplicity="0..1" />
+    <End Role="Musteri" Type="Self.Musteri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HayvanatBahcesi">
+        <PropertyRef Name="HBid" />
+      </Principal>
+      <Dependent Role="Musteri">
+        <PropertyRef Name="HBid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satar_Bilet">
+    <End Role="Bilet" Type="Self.Bilet" Multiplicity="1" />
+    <End Role="Satar" Type="Self.Satar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bilet">
+        <PropertyRef Name="Bid" />
+      </Principal>
+      <Dependent Role="Satar">
+        <PropertyRef Name="Bid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satar_Calisan">
+    <End Role="Calisan" Type="Self.Calisan" Multiplicity="1" />
+    <End Role="Satar" Type="Self.Satar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calisan">
+        <PropertyRef Name="Cid" />
+      </Principal>
+      <Dependent Role="Satar">
+        <PropertyRef Name="Cid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HayvanatBahcesiModelStoreContainer">
+    <EntitySet Name="Bilet" EntityType="Self.Bilet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calisan" EntityType="Self.Calisan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hayvan" EntityType="Self.Hayvan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HayvanatBahcesi" EntityType="Self.HayvanatBahcesi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HayvanDetay" EntityType="Self.HayvanDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteri" EntityType="Self.Musteri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ctelefon" EntityType="Self.Ctelefon" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Ctelefon].[Ctelefon] AS [Ctelefon], 
+    [Ctelefon].[Cid] AS [Cid]
+    FROM [dbo].[Ctelefon] AS [Ctelefon]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Mtelefon" EntityType="Self.Mtelefon" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Mtelefon].[Mtelefon] AS [Mtelefon], 
+    [Mtelefon].[Mid] AS [Mid]
+    FROM [dbo].[Mtelefon] AS [Mtelefon]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Satar" EntityType="Self.Satar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Satar].[Cid] AS [Cid], 
+    [Satar].[Bid] AS [Bid]
+    FROM [dbo].[Satar] AS [Satar]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Bilet_Musteri" Association="Self.FK_Bilet_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Bilet" EntitySet="Bilet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calisan_HayvanatBahcesi" Association="Self.FK_Calisan_HayvanatBahcesi">
+      <End Role="HayvanatBahcesi" EntitySet="HayvanatBahcesi" />
+      <End Role="Calisan" EntitySet="Calisan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ctelefon_Calisan" Association="Self.FK_Ctelefon_Calisan">
+      <End Role="Calisan" EntitySet="Calisan" />
+      <End Role="Ctelefon" EntitySet="Ctelefon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hayvan_Calisan" Association="Self.FK_Hayvan_Calisan">
+      <End Role="Calisan" EntitySet="Calisan" />
+      <End Role="Hayvan" EntitySet="Hayvan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hayvan_HayvanatBahcesi" Association="Self.FK_Hayvan_HayvanatBahcesi">
+      <End Role="HayvanatBahcesi" EntitySet="HayvanatBahcesi" />
+      <End Role="Hayvan" EntitySet="Hayvan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HayvanDetay_Hayvan" Association="Self.FK_HayvanDetay_Hayvan">
+      <End Role="Hayvan" EntitySet="Hayvan" />
+      <End Role="HayvanDetay" EntitySet="HayvanDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Mtelefon_Musteri" Association="Self.FK_Mtelefon_Musteri">
+      <End Role="Musteri" EntitySet="Musteri" />
+      <End Role="Mtelefon" EntitySet="Mtelefon" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Musteri_HayvanatBahcesi" Association="Self.FK_Musteri_HayvanatBahcesi">
+      <End Role="HayvanatBahcesi" EntitySet="HayvanatBahcesi" />
+      <End Role="Musteri" EntitySet="Musteri" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satar_Bilet" Association="Self.FK_Satar_Bilet">
+      <End Role="Bilet" EntitySet="Bilet" />
+      <End Role="Satar" EntitySet="Satar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satar_Calisan" Association="Self.FK_Satar_Calisan">
+      <End Role="Calisan" EntitySet="Calisan" />
+      <End Role="Satar" EntitySet="Satar" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

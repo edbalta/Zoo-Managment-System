@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="853343d1a5d848cc9bd9e78976361d67" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Bilet" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Calisan" Width="1.5" PointX="7.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Hayvan" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.HayvanatBahcesi" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.HayvanDetay" Width="1.5" PointX="12" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Musteri" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Ctelefon" Width="1.5" PointX="9.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HayvanatBahcesiModel.Mtelefon" Width="1.5" PointX="5.25" PointY="11" IsExpanded="true" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Bilet_Musteri" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Calisan_HayvanatBahcesi" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Ctelefon_Calisan" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Hayvan_Calisan" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Hayvan_HayvanatBahcesi" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_HayvanDetay_Hayvan" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Musteri_HayvanatBahcesi" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.FK_Mtelefon_Musteri" ManuallyRouted="false" />
+        <AssociationConnector Association="HayvanatBahcesiModel.Satar" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
